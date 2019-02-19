@@ -1,17 +1,24 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>All Notes</title>
-</head>
+<head data-th-replace="fragments/layout :: headFragment(title='All Notes')"></head>
 <body>
-    <h1>All Notes</h1>
-    <ul>
-        <li>...</li>
-    </ul>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <h1>All Notes</h1>
+            <ul class="collection">
+                <li class="collection-item" data-th-each="note : ${notes}">
+                    <a data-th-href="@{/notes/{id} (id=${note.id}) }">
+                        <span data-th-text="${note.name}"></span>
+                    </a>
+                </li>
+            </ul>
+            <a data-th-href="@{/notes/add}" class="waves-effect waves-light btn">Add Note</a>
+        </div>
+    </div>
+</div>
+
+<div data-th-include="fragments/layout :: scriptsFragment" data-th-remove="tag"></div>
 
 </body>
 </html>
